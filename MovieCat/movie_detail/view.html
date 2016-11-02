@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  <h1>{{ movie.title}}</h1>
+  <img ng-src="{{ movie.images.large }}" alt="{{movie.title}}" width="500">
+  <div ng-show="!loading">
+    <p>◎ 年代： <span>{{movie.year}}</span></p>
+    <p>◎ 类别： <span>{{movie.genres.join('/')}}</span></p>
+    <p>◎ 国家： <span>{{movie.countries}}</span></p>
+    <p>
+      ◎主演：
+          <span ng-repeat="c in movie.casts">
+	        	{{c.name}}{{$last?'':'、'}}
+            <!-- <span ng-if="!$last">、</span> -->
+          </span>
+    </p>
+    <p>
+      ◎导演：
+          <span ng-repeat="d in movie.directors">
+	        	{{d.name + ($last?'':'、')}}
+            <!-- <span ng-if="!$last">、</span> -->
+          </span>
+    </p>
+    <p>◎简介</p>
+  </div>
+  <p><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{{movie.summary}}</span></p>
+</div>
+<div class="mask" ng-show="loading">
+  <div class="spinner">
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+  </div>
+</div>
